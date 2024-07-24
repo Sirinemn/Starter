@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.email;
+package fr.sirine.starter.email;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;

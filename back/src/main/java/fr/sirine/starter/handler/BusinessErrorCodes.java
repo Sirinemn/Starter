@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.handler;
+package fr.sirine.starter.handler;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

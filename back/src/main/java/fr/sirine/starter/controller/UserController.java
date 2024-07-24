@@ -1,7 +1,7 @@
-package fr.sirine.ma_cuisine_maison.controller;
+package fr.sirine.starter.controller;
 
-import fr.sirine.ma_cuisine_maison.user.User;
-import fr.sirine.ma_cuisine_maison.user.UserService;
+import fr.sirine.starter.user.User;
+import fr.sirine.starter.user.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

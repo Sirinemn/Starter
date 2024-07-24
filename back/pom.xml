@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>fr.sirine</groupId>
-	<artifactId>ma-cuisine-maison</artifactId>
+	<artifactId>starter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ma-cuisine-maison-api</name>
-	<description>mon projet personnel Spring Boot pour publier des recettes de cuisine</description>
+	<name>starter-api</name>
+	<description>mon projet personnel Spring Boot </description>
 	<url/>
 	<licenses>
 		<license/>
@@ -66,17 +66,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>1.5.1.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-processor</artifactId>
-			<version>1.5.1.Final</version>
-		</dependency>
-		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
 			<version>0.11.5</version>
@@ -94,11 +83,6 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.5</version>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.coobird</groupId>
-			<artifactId>thumbnailator</artifactId>
-			<version>0.4.20</version>
 		</dependency>
 
 		<dependency>

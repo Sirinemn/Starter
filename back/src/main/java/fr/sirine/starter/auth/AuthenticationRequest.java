@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.auth;
+package fr.sirine.starter.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

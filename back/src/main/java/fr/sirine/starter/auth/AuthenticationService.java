@@ -1,14 +1,14 @@
-package fr.sirine.ma_cuisine_maison.auth;
+package fr.sirine.starter.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.sirine.ma_cuisine_maison.email.EmailService;
-import fr.sirine.ma_cuisine_maison.email.EmailTemplateName;
-import fr.sirine.ma_cuisine_maison.role.RoleRepository;
-import fr.sirine.ma_cuisine_maison.security.JwtService;
-import fr.sirine.ma_cuisine_maison.user.TokenRepository;
-import fr.sirine.ma_cuisine_maison.user.Token;
-import fr.sirine.ma_cuisine_maison.user.UserRepository;
-import fr.sirine.ma_cuisine_maison.user.User;
+import fr.sirine.starter.email.EmailService;
+import fr.sirine.starter.email.EmailTemplateName;
+import fr.sirine.starter.role.RoleRepository;
+import fr.sirine.starter.security.JwtService;
+import fr.sirine.starter.user.TokenRepository;
+import fr.sirine.starter.user.Token;
+import fr.sirine.starter.user.UserRepository;
+import fr.sirine.starter.user.User;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

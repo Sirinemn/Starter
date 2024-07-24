@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.user;
+package fr.sirine.starter.user;
 
 
 import jakarta.transaction.Transactional;

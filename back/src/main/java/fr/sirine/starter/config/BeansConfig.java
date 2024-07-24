@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.config;
+package fr.sirine.starter.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

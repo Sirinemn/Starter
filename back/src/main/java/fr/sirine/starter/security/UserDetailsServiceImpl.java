@@ -1,7 +1,7 @@
-package fr.sirine.ma_cuisine_maison.security;
+package fr.sirine.starter.security;
 
-import fr.sirine.ma_cuisine_maison.user.User;
-import fr.sirine.ma_cuisine_maison.user.UserRepository;
+import fr.sirine.starter.user.User;
+import fr.sirine.starter.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

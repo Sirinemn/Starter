@@ -1,8 +1,8 @@
-package fr.sirine.ma_cuisine_maison.auth;
+package fr.sirine.starter.auth;
 
 
-import fr.sirine.ma_cuisine_maison.user.User;
-import fr.sirine.ma_cuisine_maison.user.UserService;
+import fr.sirine.starter.user.User;
+import fr.sirine.starter.user.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;

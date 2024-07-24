@@ -1,7 +1,7 @@
-package fr.sirine.ma_cuisine_maison.role;
+package fr.sirine.starter.role;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import fr.sirine.ma_cuisine_maison.user.User;
+import fr.sirine.starter.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;

@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.handler;
+package fr.sirine.starter.handler;
 
 import jakarta.mail.MessagingException;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.HashSet;
 import java.util.Set;
 
-import static fr.sirine.ma_cuisine_maison.handler.BusinessErrorCodes.*;
+import static fr.sirine.starter.handler.BusinessErrorCodes.*;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;

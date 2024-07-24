@@ -1,4 +1,5 @@
-package fr.sirine.ma_cuisine_maison.role;
+package fr.sirine.starter.role;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

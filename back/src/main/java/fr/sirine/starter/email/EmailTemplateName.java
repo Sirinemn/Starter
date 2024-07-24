@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.email;
+package fr.sirine.starter.email;
 
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.security;
+package fr.sirine.starter.security;
 
 
 import io.jsonwebtoken.Claims;

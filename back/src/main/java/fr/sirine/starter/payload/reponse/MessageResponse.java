@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.payload.reponse;
+package fr.sirine.starter.payload.reponse;
 
 import lombok.Getter;
 

@@ -1,6 +1,6 @@
-package fr.sirine.ma_cuisine_maison.user;
+package fr.sirine.starter.user;
 
-import fr.sirine.ma_cuisine_maison.role.Role;
+import fr.sirine.starter.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;

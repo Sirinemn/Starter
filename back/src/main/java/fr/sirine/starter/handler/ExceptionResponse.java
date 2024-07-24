@@ -1,4 +1,4 @@
-package fr.sirine.ma_cuisine_maison.handler;
+package fr.sirine.starter.handler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
