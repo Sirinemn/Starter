@@ -1,0 +1,6 @@
+<div *ngIf="$isLogged() | async" class="container">
+  
+    <h1> Bienvenue {{user.pseudo}}</h1>
+  </div>
+ 
+<router-outlet></router-outlet>
