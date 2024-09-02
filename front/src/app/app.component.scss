@@ -8,57 +8,7 @@
     list-style-type: none;
     text-decoration: none;
 }
-li a:hover {
-    opacity: 50%;;
-}
+
 .active{
     color: purple
 }
-nav ul{
-    display: flex;
-    justify-content: flex-end; 
-}
-nav li{
-    position: relative;
-    bottom: 80px;
-    padding: 10px;
-    width: 60px;
-}
-mat-sidenav-container{
-    display: none;
-}
-.btn{
-    display: none;
-}
-
-@media screen and (max-width:550px){
-    mat-sidenav-container{
-        display: inline;
-    }
-    .btn{
-        display: inline;
-        float:right;
-        padding: 15px;
-        height: 100%;
-    }
-    mat-sidenav{
-        width: 50%;
-    }
-    mat-sidenav-content{
-        width: 100%;
-        height: 100%;
-    }
-  
-    nav ul{
-        display: none;
-    }
-    .sidenav{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .sidenav .me{
-      padding-top: 450px;
-    }
-
-}  
