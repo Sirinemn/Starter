@@ -25,7 +25,7 @@ import { NgIf, AsyncPipe } from '@angular/common';
     ],
 })
 export class AppComponent {
-  title = 'Ma Cuisine Maison';
+  title = 'Mon starter';
   public user!:User;
 
   constructor(
