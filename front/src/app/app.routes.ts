@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { unauthGuard } from './guards/unauth.guard';
+import { UnauthGuard } from './guards/unauth.guard';
 
 export const routes: Routes = [
   { 
@@ -12,10 +11,9 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    canActivate: [unauthGuard], 
+    canActivate: [UnauthGuard], 
     loadChildren : ()=> 
-      import('./feature/auth/auth.routes').then((r) => r.auth_routes)
-    
+      import('./feature/auth/auth.routes').then((r) => r.auth_routes) 
   },
   { 
     path: '404',

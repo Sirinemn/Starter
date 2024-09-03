@@ -11,13 +11,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
     standalone: true,
-    imports: [MatButtonModule, MatIconModule, MatCardModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, NgIf]
+    imports: [MatButtonModule, MatIconModule, MatCardModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, NgIf, MatNativeDateModule ],
+    providers: [ MatDatepickerModule]
 })
 export class RegisterComponent implements OnDestroy{
   
@@ -45,7 +47,7 @@ export class RegisterComponent implements OnDestroy{
 
     this.httpSubscription = this.authService.register(registerRequest).subscribe(
       () => { 
-        this.router.navigate(['activate-account'])
+        this.router.navigate(['auth/activate-account'])
       }, 
       (error )=> {
         this.errorMessage= error.error.error;
