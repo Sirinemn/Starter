@@ -16,10 +16,10 @@ export class HomeComponent {
 
   
   connect() {
-    this.router.navigate(['login']);
+    this.router.navigate(['auth/login']);
   }
   register() {
-    this.router.navigate(['register']);
+    this.router.navigate(['auth/register']);
   }
 
 }

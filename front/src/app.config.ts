@@ -12,8 +12,9 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { BrowserModule } from "@angular/platform-browser";
 import { provideAnimations } from "@angular/platform-browser/animations";
-import { AppRoutingModule } from "./app/app-routing.module";
+import { routes } from "./app/app.routes";
 import { JwtInterceptor } from "./app/interceptors/jwt.interceptor";
+import { provideRouter } from "@angular/router";
 
 const materialModule = [
     MatButtonModule,
@@ -28,8 +29,9 @@ const materialModule = [
   ];
 
 export const appConfig: ApplicationConfig = {    providers: [
-    importProvidersFrom( BrowserModule, AppRoutingModule, FormsModule, ...materialModule),
+    importProvidersFrom( BrowserModule, FormsModule, ...materialModule),
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     provideAnimations(),
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(withInterceptorsFromDi()),
+    provideRouter(routes)
 ]}

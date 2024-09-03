@@ -4,7 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ActivateAcountComponent } from './components/activate-acount/activate-acount.component';
 
-const routes: Routes = [
+export const auth_routes: Routes = [
   { 
     title: 'Login', 
     path: 'login', 
@@ -21,9 +21,3 @@ const routes: Routes = [
     component: RegisterComponent 
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class AuthRoutingModule {}
