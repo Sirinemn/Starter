@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SessionService } from './service/session.service';
 import { Observable } from 'rxjs';
-import { UserService } from './service/user.service';
 import { User } from './interface/user';
 import { AuthService } from './feature/auth/services/auth.service';
 import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';

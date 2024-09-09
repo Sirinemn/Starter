@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Landing Page</title>
+  </head>
+  <body>
+    <div class="welcome">
+        <p>Bienvenue {{user.pseudo}}</p>
+        <button mat-raised-button class="btn" (click)="logOut()">
+          <mat-icon>logout</mat-icon>
+          <span >Se déconnecter</span>
+        </button>
+    </div>
+  </body>
+</html>

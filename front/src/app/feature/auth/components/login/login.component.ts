@@ -55,7 +55,7 @@ export class LoginComponent implements OnDestroy {
         this.authService.me()
           .subscribe((user: User) => {
             this.sessionService.logIn(user);
-            this.router.navigate(['']);
+            this.router.navigate(['reception/welcome']);
           });
       },
       (error) => {
@@ -70,6 +70,8 @@ export class LoginComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.httpSubscription.unsubscribe();
+    if(this.httpSubscription){
+      this.httpSubscription.unsubscribe();
+    }
   }
 }
