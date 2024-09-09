@@ -2,7 +2,7 @@ version: '3.3'
 services:
   database:
     image: mysql:5.7
-    container_name: MySql
+    container_name: MySql_Starter
     environment:
       MYSQL_DATABASE: mon_starter
       # So you don't have to use root, but you can if you like
@@ -38,7 +38,7 @@ services:
       - spring-demo
       
   mail-dev:
-    container_name: mail-dev-bsn
+    container_name: mail-dev-bsn-starter
     image: maildev/maildev
     ports:
       - 1080:1080
