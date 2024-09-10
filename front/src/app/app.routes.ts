@@ -12,7 +12,7 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    //canActivate: [UnauthGuard], 
+    canActivate: [UnauthGuard], 
     loadChildren : ()=> 
       import('./feature/auth/auth.routes').then((r) => r.auth_routes) 
   },
