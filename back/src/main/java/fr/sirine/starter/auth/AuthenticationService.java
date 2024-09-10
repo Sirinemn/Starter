@@ -1,6 +1,5 @@
 package fr.sirine.starter.auth;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.sirine.starter.email.EmailService;
 import fr.sirine.starter.email.EmailTemplateName;
 import fr.sirine.starter.role.RoleRepository;
@@ -12,7 +11,6 @@ import fr.sirine.starter.user.User;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -41,7 +39,7 @@ public class AuthenticationService {
     @Value("${app.mailing.frontend.activation-url}")
     private String activationUrl;
 
-    public void register(RegistrationRequest request) throws MessagingException, Exception {
+    public void register(RegistrationRequest request) throws  Exception {
         var userRole = roleRepository.findByName("USER")
                 // todo - better exception handling
                 .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
