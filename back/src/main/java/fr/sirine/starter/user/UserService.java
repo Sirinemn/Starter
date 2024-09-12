@@ -36,12 +36,7 @@ public class UserService {
 
     public User getUserByPseudo(String pseudo) {
 
-        return userRepository.findByPseudo(pseudo).orElse(null);
-    }
-
-    public User getUserPseudoByName(String pseudo) {
-
-        return userRepository.findByPseudo(pseudo).orElse(null);
+        return this.userRepository.findByPseudo(pseudo).orElse(null);
     }
 
 }
