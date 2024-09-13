@@ -1,6 +1,5 @@
 package fr.sirine.starter.security;
 
-import fr.sirine.starter.user.User;
 import fr.sirine.starter.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
