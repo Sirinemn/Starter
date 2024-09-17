@@ -1,5 +1,6 @@
 package fr.sirine.starter.mapper;
 
+import fr.sirine.starter.MonStarter;
 import fr.sirine.starter.dto.UserDto;
 import fr.sirine.starter.user.User;
 import org.junit.jupiter.api.Test;
@@ -12,47 +13,43 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = {UserMapper.class})
+@SpringBootTest(classes = MonStarter.class)
 class UserMapperTest {
 
     @Autowired
     private  UserMapper userMapper;
 
-    public UserMapperTest(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
-
     @Test
     public void shouldMapUsertoUserDto() throws IOException {
         LocalDateTime rightNow = LocalDateTime.now();
-        User initialUser = User.builder()
-                .id(1)
-                .email("john@mail.fr")
-                .enabled(true)
-                .accountLocked(true)
-                .firstname("John")
-                .lastname("Doe")
-                .pseudo("JohnD")
-                .createdDate(rightNow)
-                .build();
+        User initialUser = new User();
+        initialUser.setId(1);
+        initialUser.setEmail("john@mail.fr");
+        initialUser.setEnabled(true);
+        initialUser.setAccountLocked(true);
+        initialUser.setFirstname("John");
+        initialUser.setLastname("Doe");
+        initialUser.setPseudo("JohnD");
+        initialUser.setCreatedDate(rightNow);
+
         UserDto userDto = userMapper.toDto(initialUser);
 
-        assertNotEquals(initialUser.getPseudo(), userDto.getPseudo());
-        assertNotEquals(initialUser.getEmail(), userDto.getEmail());
-        assertNotEquals(initialUser.getId(), userDto.getId());
+        assertEquals(initialUser.getPseudo(), userDto.getPseudo());
+        assertEquals(initialUser.getEmail(), userDto.getEmail());
+        assertEquals(initialUser.getId(), userDto.getId());
     }
     @Test
     public void shouldMapUserStotoUser() throws IOException {
-        UserDto userDto = UserDto.builder()
-                .id(1)
-                .email("john@mail.fr")
-                .pseudo("JohnD")
-                .build();
+        UserDto userDto = new UserDto();
+                userDto.setId(1);
+                userDto.setEmail("john@mail.fr");
+                userDto.setPseudo("JohnD");
+
         User user = userMapper.toEntity(userDto);
 
-        assertNotEquals(userDto.getPseudo(), user.getPseudo());
-        assertNotEquals(userDto.getEmail(), user.getEmail());
-        assertNotEquals(userDto.getId(), user.getId());
+        assertEquals(userDto.getPseudo(), user.getPseudo());
+        assertEquals(userDto.getEmail(), user.getEmail());
+        assertEquals(userDto.getId(), user.getId());
     }
 
 
