@@ -24,7 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 export class RegisterComponent implements OnDestroy{
   
   public errorMessage: string = "";
-  private httpSubscription!: Subscription;
+  public httpSubscription!: Subscription;
 
   constructor(
     private authService: AuthService,

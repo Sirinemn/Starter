@@ -32,7 +32,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class LoginComponent implements OnDestroy {
   public hide = true;
-  private httpSubscription!: Subscription;
+  public httpSubscription!: Subscription;
   public errorMessage: string = '';
 
   public form = this.fb.group({

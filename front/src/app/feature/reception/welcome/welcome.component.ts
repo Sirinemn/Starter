@@ -4,11 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interface/user';
 import { SessionService } from 'src/app/service/session.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule],
+  imports: [MatButtonModule, MatIconModule, NgIf],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss'
 })
