@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -46,11 +47,24 @@ public class AuthenticationController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<User> currentUserName(Authentication authentication)  {
-        String name = authentication.getName();
-        User user = userService.findByEmail(name);
+    public ResponseEntity<?> currentUserName(Authentication authentication)  {
+        // Vérifier que l'utilisateur est authentifié
+        if (authentication == null || !authentication.isAuthenticated()) {
+            // Retourner 401 Unauthorized si l'utilisateur n'est pas authentifié
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Utilisateur non authentifié.");
+        }
 
-            return ResponseEntity.ok(user);
+        // Récupérer le nom de l'utilisateur à partir de l'authentification
+        String email = authentication.getName();
+        User optionalUser = userService.findByEmail(email);
+
+        // Si l'utilisateur n'est pas trouvé dans la base de données, retourner une erreur 404
+        if (optionalUser== null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utilisateur non trouvé.");
+        }
+
+        // Renvoyer l'utilisateur trouvé
+        return ResponseEntity.ok(optionalUser);
 
     }
 }

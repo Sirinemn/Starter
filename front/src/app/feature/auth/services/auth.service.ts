@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RegisterRequest } from '../interfaces/register-request';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { User } from 'src/app/interface/user';
 import { SessionInformation } from 'src/app/interface/session-information';
 import { LoginRequest } from '../interfaces/login-request';
@@ -27,7 +27,14 @@ export class AuthService {
   }
 
   public me(): Observable<User> {
-    return this.httpClient.get<User>(`${this.pathService}/me`);
+    return this.httpClient.get<User>(`${this.pathService}/me`).pipe(
+      catchError((err) => {
+        if (err.status === 401) {
+          // Gestion spécifique pour utilisateur non connecté
+          console.log('L\'utilisateur n\'est pas connecté.');
+        }
+        return throwError(() => new Error(err.message || 'Erreur inconnue'));
+      })
+    );
   }
-
 }

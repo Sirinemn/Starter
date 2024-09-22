@@ -46,8 +46,13 @@ export class AppComponent {
         this.sessionService.logIn(user);
         this.user=user;
       },
-     error: () => {
+     error: (err) => {
+      if (err.status === 401) {
+        console.log('Utilisateur non authentifié, déconnexion automatique.');
         this.sessionService.logOut();
+      } else {
+        console.error('Erreur lors de la récupération des informations utilisateur :', err);
+      }
       }
   });
   }
