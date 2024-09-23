@@ -1,7 +1,6 @@
 package fr.sirine.starter.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.sirine.starter.MonStarter;
 import fr.sirine.starter.auth.AuthenticationRequest;
 import fr.sirine.starter.auth.RegistrationRequest;
 import fr.sirine.starter.user.*;
@@ -11,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -18,13 +19,13 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 public class AuthenticationControllerIntegrationTest {
-
 
     @Autowired
     private UserRepository userRepository;
@@ -140,10 +141,35 @@ public class AuthenticationControllerIntegrationTest {
     }
 
     @Test
-    @WithMockUser(username = "john.doe@mail.com", roles = {"USER"})  // Simule une authentification
-    public void shouldReturnCurrentUser() throws Exception {
+    public void testCurrentUserName_unauthenticatedUser() throws Exception {
         mockMvc.perform(get("/auth/me"))
-                .andExpect(status().isOk()) ; 
+                .andExpect(status().isUnauthorized())
+                .andExpect(content().string("Utilisateur non authentifié."));
+    }
 
+    @Test
+    @WithMockUser(username = "nonexistent@example.com")
+    public void testCurrentUserName_userNotFound() throws Exception {
+        mockMvc.perform(get("/auth/me"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Utilisateur non trouvé."));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    public void testCurrentUserName_authenticatedUser() throws Exception {
+        User user = new User();
+        user.setId(5);
+        user.setFirstname("test");
+        user.setLastname("test");
+        user.setEmail("test@example.com");
+        user.setPseudo("test");
+        user.setPassword(passwordEncoder().encode("testpassword"));
+        user.setEnabled(false);
+        userRepository.save(user);
+
+        mockMvc.perform(get("/auth/me"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.email").value("test@example.com"));
     }
 }

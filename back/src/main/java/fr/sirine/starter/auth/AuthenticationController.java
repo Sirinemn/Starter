@@ -3,6 +3,7 @@ package fr.sirine.starter.auth;
 
 import fr.sirine.starter.user.User;
 import fr.sirine.starter.user.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
@@ -23,7 +24,7 @@ public class AuthenticationController {
 
     public final AuthenticationService authenticationService;
     public final UserService userService;
-
+    @Operation(summary = "Inscrire un utilisateur")
     @PostMapping("/register")
     public ResponseEntity<?> register(
             @RequestBody @Valid RegistrationRequest request
@@ -31,21 +32,21 @@ public class AuthenticationController {
         authenticationService.register(request);
         return ResponseEntity.accepted().build();
     }
-
+    @Operation(summary = "Connecter un utilisateur")
     @PostMapping("/authentication")
     public ResponseEntity<AuthenticationResponse> authenticate(
         @RequestBody @Valid AuthenticationRequest request
     ){
         return  ResponseEntity.ok(authenticationService.authenticate(request));
     }
-
+    @Operation(summary = "Activer le compte de l'utilisateur par un token")
     @GetMapping("/activate-account")
     public void confirm(
             @RequestParam String token
     ) throws Exception {
         authenticationService.activateAccount(token);
     }
-
+    @Operation(summary = "Récupérer l'utilisateur connecté à l'application")
     @GetMapping("/me")
     public ResponseEntity<?> currentUserName(Authentication authentication)  {
         // Vérifier que l'utilisateur est authentifié
@@ -65,6 +66,5 @@ public class AuthenticationController {
 
         // Renvoyer l'utilisateur trouvé
         return ResponseEntity.ok(optionalUser);
-
     }
 }

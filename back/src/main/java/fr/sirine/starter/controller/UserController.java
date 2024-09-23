@@ -4,6 +4,7 @@ import fr.sirine.starter.dto.UserDto;
 import fr.sirine.starter.mapper.UserMapper;
 import fr.sirine.starter.user.User;
 import fr.sirine.starter.user.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/user")
-@Tag(name="User")
+@Tag(name="User", description = "API de gestion des utilisateurs")
 public class UserController {
 
     private final UserService userService;
@@ -26,7 +27,7 @@ public class UserController {
         this.userService = userService;
         this.userMapper = userMapper;
     }
-
+    @Operation(summary = "Récupérer un utilisateur par son ID")
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUser(@PathVariable String id) throws IOException {
 
