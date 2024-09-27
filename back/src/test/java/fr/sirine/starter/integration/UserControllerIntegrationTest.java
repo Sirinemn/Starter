@@ -3,6 +3,7 @@ package fr.sirine.starter.integration;
 import fr.sirine.starter.mapper.UserMapper;
 import fr.sirine.starter.user.User;
 import fr.sirine.starter.user.UserRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,10 @@ public class UserControllerIntegrationTest {
         user.setPassword(passwordEncoder().encode("test123"));
         user.setEnabled(true);
         userRepository.save(user);
+    }
+    @AfterEach
+    public void cleanDataBase(){
+        userRepository.deleteAll();
     }
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
