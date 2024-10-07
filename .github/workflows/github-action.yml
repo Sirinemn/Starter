@@ -36,10 +36,10 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: jacoco-reports
-                path: back/target/site/jacoco/*
+                path: back/target/surefire-reports/*
 
     frontend-tests:
-        runs-on: obunto-latest
+        runs-on: ubunto-latest
 
         defaults:
             run:
@@ -63,4 +63,4 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: jest-reports
-                path: front/coverage/starter/*
+                path: front/coverage/my-app/*
