@@ -1,5 +1,5 @@
 # Étape 1 : Construction de l'application Spring Boot
-FROM maven:3.9.4-openjdk-21 AS build
+FROM maven:3.9.4-amazoncorretto-21 AS build
 WORKDIR /workspace
 COPY pom.xml /workspace
 COPY src workspace/src
