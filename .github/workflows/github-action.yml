@@ -39,7 +39,7 @@ jobs:
                 path: back/target/surefire-reports/*
 
     frontend-tests:
-        runs-on: ubunto-latest
+        runs-on: ubuntu-latest
 
         defaults:
             run:
