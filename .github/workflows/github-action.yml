@@ -54,7 +54,7 @@ jobs:
                 node-version: 20
 
             - name: Run tests
-              run: npm nun test --no-watch --no-progress --browsers=ChromeHeadless
+              run: npm run test --no-watch --no-progress --browsers=ChromeHeadless
 
             - name: Generate Jest reports
               run: npm run test:coverage
