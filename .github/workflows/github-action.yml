@@ -27,7 +27,7 @@ jobs:
               run: mvn clean install
 
             - name: Run tests
-              run: mvn verify -Dspring.profiles=test
+              run: mvn verify
 
             - name: Generate Jacoco reports
               run: mvn test -Dspring.profiles=test
