@@ -149,7 +149,7 @@
 					<version>3.2.5</version>
 				<configuration>
 					<argLine>-Dspring.profiles.active=test</argLine>
-					<mainClass>com.example.StarterApplication</mainClass> 
+					<mainClass>fr.sirine.starter.MonStarter</mainClass> 
 				</configuration>
 			</plugin>
 			<plugin>
