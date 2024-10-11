@@ -129,3 +129,20 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             SONAR_HOST_URL: "${{ secrets.SONAR_HOST_URL }}"
           run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Mon-Starter-CI-CD -Dsonar.projectName='Mon-Starter-Analysis'
+
+    SonarQube-Analysis-frontend:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: front
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Install ddependencies
+          run: npm install
+        - name: Install scanner
+          run: npm install -g sonarqube-scanner
+        - name: run sonar scanner
+          run: sonar-scanner -Dsonar.token=${{secrets.SONAR_TOKEN}}
