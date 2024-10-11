@@ -70,7 +70,7 @@ jobs:
 
     deploy:
         runs-on: ubuntu-latest
-        needs: [frontend-tests, backend-tests]
+        needs: [frontend-tests, backend-tests, SonarQube-Analysis-frontend, SonarQube-Analysis-backend]
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -145,4 +145,4 @@ jobs:
         - name: Install scanner
           run: npm install -g sonarqube-scanner
         - name: run sonar scanner
-          run: sonar-scanner -Dsonar.token=${{secrets.SONAR_TOKEN}}
+          run: sonar-scanner -Dsonar.token=${{secrets.SONAR_TOKEN}} -Dsonar.host.url="${{secrets.SONAR_HOST_URL }}"
