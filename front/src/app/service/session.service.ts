@@ -24,7 +24,6 @@ export class SessionService {
 
   public logOut(): void {
     localStorage.removeItem('token');
-    localStorage.removeItem('userID');
     this.user = undefined;
     this.isLogged = false;
     this.next();
