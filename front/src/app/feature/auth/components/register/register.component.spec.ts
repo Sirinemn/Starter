@@ -6,7 +6,6 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { RegisterRequest } from '../../interfaces/register-request';
-import { Component } from '@angular/core';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;

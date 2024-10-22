@@ -25,7 +25,6 @@ import { NgIf, AsyncPipe } from '@angular/common';
 })
 export class AppComponent {
   title = 'Mon starter';
-  public user!:User;
 
   constructor(
     private authService: AuthService,
@@ -44,7 +43,6 @@ export class AppComponent {
     this.authService.me().subscribe({
     next:  (user: User) => {
         this.sessionService.logIn(user);
-        this.user=user;
       },
      error: (err) => {
       if (err.status === 401) {
