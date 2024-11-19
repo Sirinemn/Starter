@@ -88,16 +88,13 @@ class AuthenticationControllerTest {
         // Simuler la méthode findByEmail dans UserService
         User user = new User();
         user.setEmail("test@example.com");
-        user.setFirstname("John");
-        user.setLastname("Doe");
+        user.setPseudo("pseudo");
 
         when(userService.findByEmail("test@example.com")).thenReturn(user);
 
         mockMvc.perform(get("/auth/me"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.email").value("test@example.com"))
-                .andExpect(jsonPath("$.firstname").value("John"))
-                .andExpect(jsonPath("$.lastname").value("Doe"));
+                .andExpect(jsonPath("$.email").value("test@example.com"));
     }
 
 }
