@@ -156,4 +156,4 @@ jobs:
               -Dsonar.sources=./src \
               -Dsonar.tests=./src/app \
               -Dsonar.test.inclusions=**/*.spec.ts \
-              -Dsonar.javascript.lcov.reportPaths=coverage/<project-name>/lcov.info
+              -Dsonar.javascript.lcov.reportPaths=coverage/front/lcov.info
