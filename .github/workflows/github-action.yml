@@ -60,7 +60,7 @@ jobs:
               run: npm run test
 
             - name: Generate Jest reports
-              run: npm run test:coverage
+              run: npm run test:ci
 
             - name: Upload Jest reports
               uses: actions/upload-artifact@v4
@@ -154,3 +154,6 @@ jobs:
               -Dsonar.projectKey=MonStarter-Frontend \
               -Dsonar.projectName='Mon Starter Frontend' \
               -Dsonar.sources=./src \
+              -Dsonar.tests=./src/app \
+              -Dsonar.test.inclusions=**/*.spec.ts \
+              -Dsonar.javascript.lcov.reportPaths=coverage/<project-name>/lcov.info
