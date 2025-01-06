@@ -148,12 +148,15 @@
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.9</version>
 				<executions>
+					<!-- Activer JaCoCo lors de l'initialisation -->
 					<execution>
+						<id>prepare-agent</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
 						<phase>initialize</phase>
 					</execution>
+					<!-- Générer le rapport après les tests -->
 					<execution>
 						<id>report</id>
 						<phase>verify</phase>
@@ -162,8 +165,13 @@
 						</goals>
 					</execution>
 				</executions>
-
+				<configuration>
+					<!-- Définir l'emplacement du fichier jacoco.exec -->
+					<destFile>${project.build.directory}/jacoco.exec</destFile>
+					<outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
+				</configuration>
 			</plugin>
+
 
 			<!-- Maven Surefire Plugin -->
 			<plugin>
@@ -171,9 +179,13 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.2.5</version>
 				<configuration>
-					<argLine> -Dspring.profiles.active=test</argLine>
+					<argLine>-javaagent:${settings.localRepository}/org/jacoco/org.jacoco.agent/0.8.9/org.jacoco.agent-0.8.9-runtime.jar=destfile=${project.build.directory}/jacoco.exec</argLine>
+					<systemPropertyVariables>
+						<spring.profiles.active>test</spring.profiles.active>
+					</systemPropertyVariables>
 				</configuration>
 			</plugin>
+
 			<!-- Spring Boot Maven Plugin -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

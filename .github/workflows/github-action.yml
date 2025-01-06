@@ -26,17 +26,17 @@ jobs:
             - name: Build project
               run: mvn clean install
 
-            - name: Run tests
-              run: mvn verify
-
             - name: Generate Jacoco reports
               run: mvn test
 
+            - name: Run tests
+              run: mvn verify
+
             - name: Upload Jacoco reports
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v3
               with:
                 name: jacoco-reports
-                path: back/target/surefire-reports/*
+                path: back/target/jacoco.exec
 
     frontend-tests:
         runs-on: ubuntu-latest
@@ -129,7 +129,14 @@ jobs:
           env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             SONAR_HOST_URL: "${{ secrets.SONAR_HOST_URL }}"
-          run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Mon-Starter-CI-CD -Dsonar.projectName='Mon-Starter-Backend'
+          run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+            -Dsonar.projectKey=Mon-Starter-CI-CD \
+            -Dsonar.projectName="Mon-Starter-Backend" \
+            -Dsonar.sources=src/main/java \
+            -Dsonar.tests=src/test/java \
+            -Dsonar.java.binaries=target/classes \
+            -Dsonar.junit.reportPaths=target/surefire-reports \
+            -Dsonar.jacoco.reportPaths=target/jacoco.exec
 
     SonarQube-Analysis-frontend:
       runs-on: ubuntu-latest
