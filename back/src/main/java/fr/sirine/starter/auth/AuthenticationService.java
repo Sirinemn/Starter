@@ -39,6 +39,9 @@ public class AuthenticationService {
     @Value("${app.mailing.frontend.activation-url}")
     private String activationUrl;
 
+    @Value("{app.token.expiration-time}")
+    private Long tokenExpiration;
+
     public void register(RegistrationRequest request) throws  Exception {
         var userRole = roleRepository.findByName("USER")
                 // todo - better exception handling
@@ -105,7 +108,7 @@ public class AuthenticationService {
         var token = Token.builder()
                 .token(generatedToken)
                 .createdAt(LocalDateTime.now())
-                .expiresAt(LocalDateTime.now().plusMinutes(15))
+                .expiresAt(LocalDateTime.now().plusMinutes(tokenExpiration))
                 .user(user)
                 .build();
         tokenRepository.save(token);
