@@ -40,7 +40,7 @@ public class AuthenticationService {
     private String activationUrl;
 
     @Value("{app.token.expiration-time}")
-    private Long tokenExpiration;
+    private String tokenExpiration;
 
     public void register(RegistrationRequest request) throws  Exception {
         var userRole = roleRepository.findByName("USER")
@@ -108,7 +108,7 @@ public class AuthenticationService {
         var token = Token.builder()
                 .token(generatedToken)
                 .createdAt(LocalDateTime.now())
-                .expiresAt(LocalDateTime.now().plusMinutes(tokenExpiration))
+                .expiresAt(LocalDateTime.now().plusMinutes(Long.parseLong(tokenExpiration)))
                 .user(user)
                 .build();
         tokenRepository.save(token);
