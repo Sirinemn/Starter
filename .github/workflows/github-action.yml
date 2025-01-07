@@ -131,14 +131,16 @@ jobs:
           env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             SONAR_HOST_URL: "${{ secrets.SONAR_HOST_URL }}"
-          run: mvn sonar:sonar \ 
-            -Dsonar.projectKey=Mon-Starter-CI-CD \ 
-            -Dsonar.projectName="Mon-Starter-Backend" \ 
-            -Dsonar.sources=src/main/java \ 
-            -Dsonar.tests=src/test/java \ 
-            -Dsonar.java.binaries=target/classes \ 
-            -Dsonar.junit.reportPaths=target/surefire-reports \
-            -Dsonar.jacoco.reportPaths=target/jacoco.exec
+          run: |
+            mvn sonar:sonar \
+              -Dsonar.projectKey=Mon-Starter-CI-CD \
+              -Dsonar.projectName="Mon-Starter-Backend" \
+              -Dsonar.sources=src/main/java \
+              -Dsonar.tests=src/test/java \
+              -Dsonar.java.binaries=target/classes \
+              -Dsonar.junit.reportPaths=target/surefire-reports \
+              -Dsonar.jacoco.reportPaths=target/jacoco.exec
+        
 
     SonarQube-Analysis-frontend:
       runs-on: ubuntu-latest
