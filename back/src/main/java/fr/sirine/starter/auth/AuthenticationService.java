@@ -39,7 +39,7 @@ public class AuthenticationService {
     @Value("${app.mailing.frontend.activation-url}")
     private String activationUrl;
 
-    @Value("{app.token.expiration-time}")
+    @Value("${app.token.expiration-time}")
     private String tokenExpiration;
 
     public void register(RegistrationRequest request) throws  Exception {
