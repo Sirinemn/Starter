@@ -51,9 +51,12 @@ class AuthenticationServiceTest {
     @BeforeEach
     public void setUp() throws NoSuchFieldException, IllegalAccessException {
         MockitoAnnotations.openMocks(this);
-        Field field = AuthenticationService.class.getDeclaredField("activationUrl");
-        field.setAccessible(true);
-        field.set(authenticationService, "http://localhost:8080/activate");
+        Field field1 = AuthenticationService.class.getDeclaredField("activationUrl");
+        field1.setAccessible(true);
+        field1.set(authenticationService, "http://localhost:8080/activate");
+        Field field2 = AuthenticationService.class.getDeclaredField("tokenExpiration");
+        field2.setAccessible(true);
+        field2.set(authenticationService, "30");
     }
 
 
