@@ -31,4 +31,4 @@ Ce projet implémente une authentification à deux facteurs (2FA) sécurisée po
 4. Exécutez l'application mais remplacez d'abord le x.x.x par la version actuelle du fichier pom.xml:
   java -jar target/book-network-api-x.x.x.jar
 5. Accédez à la documentation de l'API à l'aide de l'interface utilisateur Swagger:
-  http://localhost:8080/swagger-ui/index.html
+  http://localhost:8080/api/swagger-ui/index.html
